@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mensagem Especial</title>
+
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  #start {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    cursor: pointer;
+  }
+
+  #content {
+    display: none;
+    padding-top: 40px;
+  }
+
+  img {
+    width: 80%;
+    max-width: 320px;
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+
+  #final {
+    display: none;
+    font-size: 24px;
+    margin: 30px 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="start" onclick="startApp()">
+  ❤️ Toque para começar ❤️
+</div>
+
+<div id="content">
+  <img id="foto" src="foto1.jpg">
+  <div id="final">Você é minha vida, eu te amo!</div>
+</div>
+
+<audio id="music">
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const fotos = [
+    "foto1.jpg",
+    "foto2.jpg",
+    "foto3.jpg"
+  ];
+
+  let index = 0;
+
+  function startApp() {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+    const audio = document.getElementById("music");
+    audio.currentTime = 23; // começa no segundo 23
+    audio.play();
+
+    setInterval(() => {
+      index++;
+      if (index < fotos.length) {
+        document.getElementById("foto").src = fotos[index];
+      } else {
+        document.getElementById("final").style.display = "block";
+      }
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
